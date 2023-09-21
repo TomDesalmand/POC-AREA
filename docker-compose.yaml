@@ -19,6 +19,8 @@ services:
     volumes:
       - ./BackEnd/node_modules:/app/node_modules
       - ./BackEnd:/app
+    depends_on:
+      - mysql
 
   frontend:
     build:
