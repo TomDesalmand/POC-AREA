@@ -1,0 +1,41 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 1611
+      MYSQL_DATABASE: POCUsers
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./users.sql:/app/users.sql
+    command: ["--init-file", "/app/users.sql"]
+
+  backend:
+    build:
+      context: ./BackEnd
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./BackEnd/node_modules:/app/node_modules
+      - ./BackEnd:/app
+
+  frontend:
+    build:
+      context: ./FrontEndWeb
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./FrontEndWeb/node_modules:/app/node_modules
+      - ./FrontEndWeb:/app
+    depends_on:
+      - backend
+
+  mobile-frontend:
+    build:
+      context: ./FrontEndMobile
+    volumes:
+      - ./FrontEndMobile/node_modules:/app/node_modules
+      - ./FrontEndMobile:/app
+    depends_on:
+      - backend
