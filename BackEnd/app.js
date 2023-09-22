@@ -1,24 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-const getDBConnection = require('./source/db_connection');
+const userRegistration = require('./source/register_user');
+const userListing = require('./source/list_users');
 
 const app = express();
-const port = 3001
+const port = 3001;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/register', userRegistration);
+app.use('/list', userListing);
 
-const server = http.createServer(function (req, res) {
-    res.end()
-});
-
-server.listen(port, async function (error) {
-    if (error) {
-        console.log('Something went wrong', error);
-    } else {
-        console.log('Server is listening on port:' + port);
-    }
-    const connection = await getDBConnection();
-    const[rows, fields] = await connection.query('SELECT * FROM users');
-    console.log(rows, fields)
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });

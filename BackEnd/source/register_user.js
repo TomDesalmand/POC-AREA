@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const getDBConnection = require('./db_connection');
-const connection = getDBConnection();
+const connection = require('./db_connection');
 
-router.post('/register', (req, res) => {
+router.post('/', (req, res) => {
     const {email, name, surname, password} = req.body;
     connection.query(
-        `INSERT INTO users (email, name, surname, password) VALUES (${email}, ${name}, ${surname}, ${password})`,
+        `INSERT INTO users (email, name, surname, password) VALUES ("${email}", "${name}", "${surname}", "${password}")`,
         (error, results) => {
             if (error) {
-                console.error('Error inserting user:', err);
+                console.error('Error inserting user:', error);
                 res.status(500).json({ error: 'User registration failed' });
                 return;
             }
