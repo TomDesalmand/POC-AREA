@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . .
 
-CMD ["npm", "react-native", "run-android"]
+CMD ["METRO_HOST=0.0.0.0", "npm","start"]
