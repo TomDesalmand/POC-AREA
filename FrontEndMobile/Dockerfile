@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . .
 
-CMD ["npm", "react-native", "run-android"]
+CMD ["npm", "start"]

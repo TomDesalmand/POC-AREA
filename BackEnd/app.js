@@ -1,34 +1,24 @@
-const http = require('http');
-const mysql = require('mysql');
-const port = 3001;
-  
+const express = require('express');
+const bodyParser = require('body-parser')
+const getDBConnection = require('./source/db_connection');
+
+const app = express();
+const port = 3001
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const server = http.createServer(function (req, res) {
     res.end()
-})
-
-const connection = mysql.createConnection({
-    host: 'localhost',
-    port: '3306',
-    user: 'root',
-    password: '1611',
-    database: 'POCUsers',
 });
 
-
-server.listen(port, function (error) {
+server.listen(port, async function (error) {
     if (error) {
         console.log('Something went wrong', error);
     } else {
         console.log('Server is listening on port:' + port);
     }
+    const connection = await getDBConnection();
+    const[rows, fields] = await connection.query('SELECT * FROM users');
+    console.log(rows, fields)
 });
-
-setTimeout(() => {
-    connection.connect((err) => {
-        if (err) {
-          console.error('Error connecting to MySQL:', err);
-        } else {
-            console.log('Connected to MySQL');
-        }
-    });
-}, 2000); 
