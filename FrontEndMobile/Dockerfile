@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . .
 
-CMD ["npm", "start"]
+CMD ["METRO_HOST=0.0.0.0", "npm","start"]
