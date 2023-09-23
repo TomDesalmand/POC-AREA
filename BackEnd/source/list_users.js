@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const connection = require('./db_connection');
+const { authenticateToken } = require('./token');
 
-router.get('/', (req, res) => {
+router.get('/', authenticateToken, (req, res) => {
     connection.query(
         'SELECT * FROM users',
         (error, results) => {
