@@ -70,12 +70,13 @@ return (
       <TouchableOpacity style={styles.customButton} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-      <TouchableOpacity 
-        style={styles.customButton} 
-        onPress={() => props.navigation.navigate('Register')}
-        >
-        <Text style={styles.buttonText}>Register</Text>
-      </TouchableOpacity>
+      <View style={styles.registerContainer}>
+        <Text style={styles.registerTextBefore}>No account? </Text>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Register')}>
+            <Text style={styles.registerText}>Register</Text>
+          </TouchableOpacity>
+      </View>
+
     </View>
     
   </View>
@@ -155,9 +156,23 @@ buttonText: {
 },
 registerText: {
   color: '#008443',
-  marginTop: 15,
+  marginTop: 5,
   textAlign: 'center',
   textDecorationLine: 'underline',
+},
+registerContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginTop: 5,
+  fontSize: 15,
+
+  
+},
+registerTextBefore: {
+  fontSize: 15,
+  color: '#000000',
+  marginTop: 5,
 },
 });
 
