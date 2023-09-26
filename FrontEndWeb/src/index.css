@@ -1,13 +1,40 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500&display=swap");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* fallback for old browsers */
+  background: #F9F0F0;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #F9F0F0, #F9F0F0);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #F9F0F0, #F9F0F0);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Add this to your CSS stylesheet */
+.custom-login-button,
+.custom-sign-up-button {
+  background: linear-gradient(#81c784, #388e3c);
+  color: white;
+  /* border: 1px solid #66bb6a; */
+  border-radius: 30px;
+  transition: background 0.3s; /* Adjust the duration as needed */
 }
+
+/* Add this to your CSS stylesheet */
+.narrow-input {
+  max-width: 250px; /* Adjust the width as needed */
+}
+
+/* .custom-login-button:hover,
+.custom-sign-up-button:hover {
+  background: linear-gradient(#388e3c, #81c784);
+  color: white;
+  border: 1px solid #66bb6a;
+  border-radius: 30px;
+} */
